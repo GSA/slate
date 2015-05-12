@@ -2,12 +2,10 @@
 title: API Reference
 
 language_tabs:
-  - shell
-  - ruby
-  - python
+  - sh
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
+  - <a href='http://search.digitalgov.gov'>Sign Up for a Developer Key</a>
   - <a href='http://github.com/tripit/slate'>Documentation Powered by Slate</a>
 
 includes:
@@ -18,151 +16,158 @@ search: true
 
 # Introduction
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+Welcome to the i14y Content API! You can use our API to publish your CMS documents into our indexes to power your DigitalGov Search box.
 
-We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
-
-This example API documentation page was created with [Slate](http://github.com/tripit/slate). Feel free to edit it and use it as a base for your own API's documentation.
+By hooking into the existing lifecycle of documents in your CMS, you can create/update/delete the associated documents in our indexes via this Content API.
 
 # Authentication
 
 > To authorize, use this code:
 
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
+```sh
+# With curl, you can just pass the correct header with each request
+curl "https://i14y.usa.gov/api/v1/documents"
+  -XPOST 
+  -u your_collection_handle:your_secret_token 
 ```
 
-```python
-import kittn
+> Make sure to replace `your_collection_handle` with the name you were issued, and make sure you replace `your_secret_token` with the API key you were given.
 
-api = kittn.authorize('meowmeowmeow')
-```
+The i14y API uses keys to allow access to the API. For now, you can request access via [email](mailto:search@support.digitalgov.gov).
 
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
-```
+The i14y API expects the key to be included in all API requests to the server in a Basic authentication header that looks like the following:
 
-> Make sure to replace `meowmeowmeow` with your API key.
-
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
-
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
+`Authorization: Basic qG9yZW46bG9yZW5pMTR5dG9rZW4=`
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+You must replace <code>your_collection_handle</code> and <code>your_secret_token</code> with your personal collection handle and API key.
 </aside>
 
-# Kittens
+# HTTPS
 
-## Get All Kittens
+All access to the i14y Content API must use SSL.
 
-```ruby
-require 'kittn'
+# Documents
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
+## Create a document
 
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
-
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Isis",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
-```
-
-This endpoint retrieves all kittens.
-
-### HTTP Request
-
-`GET http://example.com/kittens`
-
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/3"
-  -H "Authorization: meowmeowmeow"
+```sh
+curl "https://i14y.usa.gov/api/v1/documents"
+  -XPOST 
+  -u your_collection_handle:your_secret_token
+  -d '{"document_id":"1",
+      "title":"this is a fairly short title",
+      "path": "http://www.gov.gov/cms/doc1.html", 
+      "created": "2015-05-12T22:35:09Z",
+      "description":"some more information here on the document", 
+      "content":"the long form body of the document", 
+      "promote": false, 
+      "language" : "en"
+      }'
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
 {
-  "id": 2,
-  "name": "Isis",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
+"status":200,
+"developer_message":"OK",
+"user_message":"Your document was successfully created."
 }
 ```
 
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">If you're not using an administrator API key, note that some kittens will return 403 Forbidden if they are hidden for admins only.</aside>
+This endpoint creates a document.
 
 ### HTTP Request
 
-`GET http://example.com/kittens/<ID>`
+`POST https://i14y.usa.gov/api/v1/documents`
 
-### URL Parameters
+### Query Parameters
 
-Parameter | Description
---------- | -----------
-ID | The ID of the cat to retrieve
+Parameter | Required | Description 
+--------- | ------- | ----------- 
+document_id | true | A document ID that is unique to your CMS.
+title | true | Document title.
+path | true | Document link URL.
+created | true | When document was initially created (e.g., '2013-02-27T10:00:00Z') 
+description | false | Document description.
+content | false | Document content.
+changed | false | When document was modified (e.g., '2013-02-27T10:00:01Z')
+promote | false | Whether to promote the document in the relevance ranking
+language | false | Two-letter locale describing language of document (defaults to 'en')
 
+<aside class="success">
+Remember — you must pass in at least one of description or content, preferably both!
+</aside>
+
+## Update a document
+
+```sh
+curl "https://i14y.usa.gov/api/v1/documents/{document_id}"
+  -XPUT 
+  -u your_collection_handle:your_secret_token
+  -d '{"title":"check out this info...today only!",
+      "promote": true"
+      }'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+"status":200,
+"developer_message":"OK",
+"user_message":"Your document was successfully updated."
+}
+```
+
+This endpoint updates a document.
+
+### HTTP Request
+
+`PUT https://i14y.usa.gov/api/v1/documents/{document_id}`
+
+### Query Parameters
+
+Parameter | Required | Description 
+--------- | ------- | ----------- 
+title | false | Document title.
+path | false | Document link URL.
+created | false | When document was initially created (e.g., '2013-02-27T10:00:00Z') 
+description | false | Document description.
+content | false | Document content.
+changed | false | When document was modified (e.g., '2013-02-27T10:00:01Z')
+promote | false | Whether to promote the document in the relevance ranking
+language | false | Two-letter locale describing language of document (defaults to 'en')
+
+<aside class="success">
+Your updates are reflected in your search results within seconds!
+</aside>
+
+## Delete a document
+
+```sh
+curl "https://i14y.usa.gov/api/v1/documents/{document_id}"
+  -XDELETE 
+  -u your_collection_handle:your_secret_token
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+"status":200,
+"developer_message":"OK",
+"user_message":"Your document was successfully deleted."
+}
+```
+
+This endpoint deletes a document.
+
+### HTTP Request
+
+`DELETE https://i14y.usa.gov/api/v1/documents/{document_id}`
+
+<aside class="success">
+Remember- The `document_id` is what you assigned the document when you created it.
+</aside>
