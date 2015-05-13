@@ -1,8 +1,13 @@
 language: ruby
 bundler_args: "--without development"
 rvm:
-- 2.2.1
-script: bundle exec rake publish
+  - 2.2.1
+
+script:
+  - git config --global user.name "Travis"
+  - git config --global user.email "no-reply@travis.org"
+  - bundle exec rake publish
+
 env:
   global:
     secure: Ba9otVrwvylZ1OEqi5NGb9yyeoRXiay9ZFnguBv7eIiszT1Kf0rD7hlzcLjR6MO1khtUMHRR1koPivq7xhYIqm4Cr+JQbt0NG8Q7aVpyXUzTIjU1DoCY9iigzr4ozdtRTXsXOn9vzyxM54PgeIeh1FrKUMcaCDk8pHPvEsXTxSv6yXKHacco8ELQOsCJoADmNwLpsebHhknIDAOAOCJGsTvkwRW4HWqWVeJ65I4EnwsnzrGaDwb5B8GULt+bMQoidv4paTVPlfH9xajdZZr3+NjN1ND8bgVtCpRuwlB8UhcSQWQ+LYQBHwGG6R1QGk1GDK6vSfjwkXmgsOtnlf+pBgfSk3FvJ6g+S5Yi6reEyDFJNpMnYQsOVEskifA03e+6e1YC3QSrs7Y1GjbOzYCWOJN+HtBkteXfC6LLDigqdAL4IpP2sYhZVG2fIB9XCCqZc4Is2dnCz/W/8G7gI/dZOSgAuHgyPgNsQiBCi2TsW4r5sYBG8AQ6utY1+HdPJefXiO3bSINKmrDztat8BqylUIGrU47OILVBdwPHctwPdyeMPwoXVjN0ikpGQVYSjDTxdqBjxIVj+XnKF4vwxEv/5whyz53JS4W6ruuaRFc5ZBOUUcLoA2/hf6eu5+B0GPNudTOOZ3WOum4tmcKnxrzp1FiEPR8F0DHK6B1DH4OG/gs=
