@@ -20,6 +20,8 @@ Welcome to the i14y Content API! You can use our API to publish your CMS documen
 
 By hooking into the existing lifecycle of documents in your CMS, you can create/update/delete the associated documents in our indexes via this Content API.
 
+Ruby/Python/Node clients are welcome.
+
 # Authentication
 
 > To authorize, use this code:
