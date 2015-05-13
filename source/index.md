@@ -2,7 +2,7 @@
 title: i14y API Instructions
 
 language_tabs:
-  - sh
+  - sh: cURL
 
 toc_footers:
   - <a href='mailto:search@support.digitalgov.gov'>Email us for an i14y API key</a>
