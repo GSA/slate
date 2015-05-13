@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>API Reference</title>
+    <title>i14y API Instructions</title>
 
     <link href="stylesheets/screen.css" rel="stylesheet" type="text/css" media="screen" />
     <link href="stylesheets/print.css" rel="stylesheet" type="text/css" media="print" />
@@ -37,22 +37,37 @@
       <div id="toc">
       </div>
         <ul class="toc-footer">
-            <li><a href='http://search.digitalgov.gov'>Sign Up for a Developer Key</a></li>
+            <li><a href='mailto:search@support.digitalgov.gov'>Email us for an i14y API key</a></li>
             <li><a href='http://github.com/tripit/slate'>Documentation Powered by Slate</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id="introduction">Introduction</h1>
+        <h1 id="what-is-i14y?">What is i14y?</h1>
 
-<p>Welcome to the i14y Content API! You can use our API to publish your CMS documents into our indexes to power your DigitalGov Search box.</p>
+<p>Our i14y API allows you to send content directly from your content management system (CMS) into <a href="http://search.digitalgov.gov/">DigitalGov Search</a> for real-time indexing. By hooking into your CMS workflow, you can immediately <a href="#create-a-document">create</a>, <a href="#update-a-document">update</a>, and <a href="#delete-a-document">delete</a> the associated documents in our search indexes via this API.</p>
 
-<p>By hooking into the existing lifecycle of documents in your CMS, you can create/update/delete the associated documents in our indexes via this Content API.</p>
+<p>Even if you don’t have a CMS, you can develop software to publish your content in a way that meets the i14y API specifications below.</p>
 
 <p>Ruby/Python/Node clients are welcome.</p>
 
+<p>Using i14y is optional. The rest of our service offering will continue as-is, providing the default web results from commercial indexes.</p>
+
+<h2 id="what-are-the-main-benefits-of-i14y?">What are the main benefits of i14y?</h2>
+
+<p>By a long shot, the two features we get asked for most are:</p>
+
+<ol>
+<li>Immediate inclusion of new or updated content in search results.</li>
+<li>Control over which documents are (or are not) in your search index.</li>
+</ol>
+
+<p>i14y answers both of these requests.</p>
+
 <h1 id="authentication">Authentication</h1>
+
+<p>You&rsquo;ll need to have a <a href="https://search.usa.gov/sites">DigitalGov Search account</a> and at least one site already set up.</p>
 
 <blockquote>
 <p>To authorize, use this code:</p>
@@ -64,24 +79,20 @@ curl <span class="s2">"https://i14y.usa.gov/api/v1/documents"</span>
 </code></pre>
 
 <blockquote>
-<p>Make sure to replace <code class="prettyprint">your_collection_handle</code> with the name you were issued, and make sure you replace <code class="prettyprint">your_secret_token</code> with the API key you were given.</p>
+<p>Replace <code class="prettyprint">your_collection_handle</code> with the your collection handle, and replace <code class="prettyprint">your_secret_token</code> with your API key.</p>
 </blockquote>
 
-<p>The i14y API uses keys to allow access to the API. For now, you can request access via <a href="mailto:search@support.digitalgov.gov">email</a>.</p>
+<p>The i14y API uses keys to allow access to the API. While we&rsquo;re still in beta, <a href="mailto:search@support.digitalgov.gov">email us</a> to request access.</p>
 
 <p>The i14y API expects the key to be included in all API requests to the server in a Basic authentication header that looks like the following:</p>
 
 <p><code class="prettyprint">Authorization: Basic qG9yZW46bG9yZW5pMTR5dG9rZW4=</code></p>
 
 <aside class="notice">
-You must replace <code>your_collection_handle</code> and <code>your_secret_token</code> with your personal collection handle and API key.
+Replace <code>your_collection_handle</code> with your collection handle, and replace <code>your_secret_token</code> with your API key.
 </aside>
 
-<h1 id="https">HTTPS</h1>
-
-<p>All access to the i14y Content API must use SSL.</p>
-
-<h1 id="documents">Documents</h1>
+<h1 id="create,-update,-and-delete-documents">Create, update, and delete documents</h1>
 
 <h2 id="create-a-document">Create a document</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"https://i14y.usa.gov/api/v1/documents"</span>
@@ -114,6 +125,8 @@ You must replace <code>your_collection_handle</code> and <code>your_secret_token
 
 <p><code class="prettyprint">POST https://i14y.usa.gov/api/v1/documents</code></p>
 
+<p>You must use https.</p>
+
 <h3 id="query-parameters">Query Parameters</h3>
 
 <table><thead>
@@ -126,37 +139,37 @@ You must replace <code>your_collection_handle</code> and <code>your_secret_token
 <tr>
 <td>document_id</td>
 <td>true</td>
-<td>A document ID that is unique to your CMS.</td>
+<td>A document ID that is unique to your CMS</td>
 </tr>
 <tr>
 <td>title</td>
 <td>true</td>
-<td>Document title.</td>
+<td>Document title</td>
 </tr>
 <tr>
 <td>path</td>
 <td>true</td>
-<td>Document link URL.</td>
+<td>Document link URL</td>
 </tr>
 <tr>
 <td>created</td>
 <td>true</td>
-<td>When document was initially created (e.g., &lsquo;2013-02-27T10:00:00Z&rsquo;)</td>
+<td>When the document was initially created (such as &lsquo;2013-02-27T10:00:00Z&rsquo;)</td>
 </tr>
 <tr>
 <td>description</td>
-<td>false</td>
-<td>Document description.</td>
+<td>false*</td>
+<td>Document description</td>
 </tr>
 <tr>
 <td>content</td>
-<td>false</td>
-<td>Document content.</td>
+<td>false*</td>
+<td>Document content</td>
 </tr>
 <tr>
 <td>changed</td>
 <td>false</td>
-<td>When document was modified (e.g., &#39;2013-02-27T10:00:01Z&rsquo;)</td>
+<td>When document was modified (such as &#39;2013-02-27T10:00:01Z&rsquo;)</td>
 </tr>
 <tr>
 <td>promote</td>
@@ -166,12 +179,12 @@ You must replace <code>your_collection_handle</code> and <code>your_secret_token
 <tr>
 <td>language</td>
 <td>false</td>
-<td>Two-letter locale describing language of document (defaults to &#39;en&rsquo;)</td>
+<td>Two-letter <a href="https://github.com/GSA/punchcard/tree/master/localizations">locale</a> describing language of document (defaults to &#39;en&rsquo;)</td>
 </tr>
 </tbody></table>
 
 <aside class="success">
-Remember — you must pass in at least one of description or content, preferably both!
+* You must pass either a description or content, and preferably both!
 </aside>
 
 <h2 id="update-a-document">Update a document</h2>
@@ -199,6 +212,8 @@ Remember — you must pass in at least one of description or content, preferably
 
 <p><code class="prettyprint">PUT https://i14y.usa.gov/api/v1/documents/{document_id}</code></p>
 
+<p>You must use https.</p>
+
 <h3 id="query-parameters">Query Parameters</h3>
 
 <table><thead>
@@ -211,32 +226,32 @@ Remember — you must pass in at least one of description or content, preferably
 <tr>
 <td>title</td>
 <td>false</td>
-<td>Document title.</td>
+<td>Document title</td>
 </tr>
 <tr>
 <td>path</td>
 <td>false</td>
-<td>Document link URL.</td>
+<td>Document link URL</td>
 </tr>
 <tr>
 <td>created</td>
 <td>false</td>
-<td>When document was initially created (e.g., &#39;2013-02-27T10:00:00Z&rsquo;)</td>
+<td>When document was initially created (such as &#39;2013-02-27T10:00:00Z&rsquo;)</td>
 </tr>
 <tr>
 <td>description</td>
 <td>false</td>
-<td>Document description.</td>
+<td>Document description</td>
 </tr>
 <tr>
 <td>content</td>
 <td>false</td>
-<td>Document content.</td>
+<td>Document content</td>
 </tr>
 <tr>
 <td>changed</td>
 <td>false</td>
-<td>When document was modified (e.g., &#39;2013-02-27T10:00:01Z&rsquo;)</td>
+<td>When document was modified (such as &#39;2013-02-27T10:00:01Z&rsquo;)</td>
 </tr>
 <tr>
 <td>promote</td>
@@ -246,7 +261,7 @@ Remember — you must pass in at least one of description or content, preferably
 <tr>
 <td>language</td>
 <td>false</td>
-<td>Two-letter locale describing language of document (defaults to &#39;en&rsquo;)</td>
+<td>Two-letter <a href="https://github.com/GSA/punchcard/tree/master/localizations">locale</a> describing language of document (defaults to &#39;en&rsquo;)</td>
 </tr>
 </tbody></table>
 
@@ -276,8 +291,10 @@ Your updates are reflected in your search results within seconds!
 
 <p><code class="prettyprint">DELETE https://i14y.usa.gov/api/v1/documents/{document_id}</code></p>
 
+<p>You must use https.</p>
+
 <aside class="success">
-Remember- The `document_id` is what you assigned the document when you created it.
+The `document_id` is the ID you assigned to the document when you created it.
 </aside>
 
           <h1 id="errors">Errors</h1>
