@@ -43,6 +43,7 @@ You'll need to have a [DigitalGov Search account](https://search.usa.gov/sites) 
 # With curl, you can just pass the correct header with each request
 curl "https://i14y.usa.gov/api/v1/documents"
   -XPOST 
+  -H "Content-Type:application/json"
   -u your_collection_handle:your_secret_token 
 ```
 
@@ -65,6 +66,7 @@ Replace <code>your_collection_handle</code> with your collection handle, and rep
 ```sh
 curl "https://i14y.usa.gov/api/v1/documents"
   -XPOST 
+  -H "Content-Type:application/json"
   -u your_collection_handle:your_secret_token
   -d '{"document_id":"1",
       "title":"this is a fairly short title",
@@ -118,6 +120,7 @@ language | false | Two-letter [locale](https://github.com/GSA/punchcard/tree/mas
 ```sh
 curl "https://i14y.usa.gov/api/v1/documents/{document_id}"
   -XPUT 
+  -H "Content-Type:application/json"
   -u your_collection_handle:your_secret_token
   -d '{"title":"check out this info...today only!",
       "promote": true"
