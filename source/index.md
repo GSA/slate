@@ -6,7 +6,7 @@ language_tabs:
 
 toc_footers:
   - <a href='mailto:search@support.digitalgov.gov'>Email us for an i14y API key</a>
-  - <a href='http://github.com/tripit/slate'>Documentation Powered by Slate</a>
+  - <a href='http://github.com/GSA/slate'>Documentation Powered by Slate</a>
 
 includes:
   - errors
