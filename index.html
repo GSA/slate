@@ -76,11 +76,11 @@
 curl <span class="s2">"https://i14y.usa.gov/api/v1/documents"</span>
   -XPOST 
   -H <span class="s2">"Content-Type:application/json"</span>
-  -u your_collection_handle:your_secret_token 
+  -u your_drawer_handle:your_secret_token 
 </code></pre>
 
 <blockquote>
-<p>Replace <code class="prettyprint">your_collection_handle</code> with the your collection handle, and replace <code class="prettyprint">your_secret_token</code> with your API key.</p>
+<p>Replace <code class="prettyprint">your_drawer_handle</code> with the your collection handle, and replace <code class="prettyprint">your_secret_token</code> with your API key.</p>
 </blockquote>
 
 <p>The i14y API uses keys to allow access to the API. While we&rsquo;re still in beta, <a href="mailto:search@support.digitalgov.gov">email us</a> to request access.</p>
@@ -90,7 +90,7 @@ curl <span class="s2">"https://i14y.usa.gov/api/v1/documents"</span>
 <p><code class="prettyprint">Authorization: Basic qG9yZW46bG9yZW5pMTR5dG9rZW4=</code></p>
 
 <aside class="notice">
-Replace <code>your_collection_handle</code> with your collection handle, and replace <code>your_secret_token</code> with your API key.
+Replace <code>your_drawer_handle</code> with your collection handle, and replace <code>your_secret_token</code> with your API key.
 </aside>
 
 <h1 id="create,-update,-and-delete-documents">Create, update, and delete documents</h1>
@@ -99,7 +99,7 @@ Replace <code>your_collection_handle</code> with your collection handle, and rep
 <pre class="highlight shell"><code>curl <span class="s2">"https://i14y.usa.gov/api/v1/documents"</span>
   -XPOST 
   -H <span class="s2">"Content-Type:application/json"</span>
-  -u your_collection_handle:your_secret_token
+  -u your_drawer_handle:your_secret_token
   -d <span class="s1">'{"document_id":"1",
       "title":"this is a fairly short title",
       "path": "http://www.gov.gov/cms/doc1.html", 
@@ -193,7 +193,7 @@ Replace <code>your_collection_handle</code> with your collection handle, and rep
 <pre class="highlight shell"><code>curl <span class="s2">"https://i14y.usa.gov/api/v1/documents/{document_id}"</span>
   -XPUT 
   -H <span class="s2">"Content-Type:application/json"</span>
-  -u your_collection_handle:your_secret_token
+  -u your_drawer_handle:your_secret_token
   -d <span class="s1">'{"title":"check out this info...today only!",
       "promote": true"
       }'</span>
@@ -275,7 +275,7 @@ Your updates are reflected in your search results within seconds!
 <h2 id="delete-a-document">Delete a document</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"https://i14y.usa.gov/api/v1/documents/{document_id}"</span>
   -XDELETE 
-  -u your_collection_handle:your_secret_token
+  -u your_drawer_handle:your_secret_token
 </code></pre>
 
 <blockquote>
