@@ -47,7 +47,7 @@ curl "https://i14y.usa.gov/api/v1/documents"
   -u your_collection_handle:your_secret_token 
 ```
 
-> Replace `your_collection_handle` with the your collection handle, and replace `your_secret_token` with your API key.
+> Replace `your_drawer_handle` with the your drawer handle, and replace `your_secret_token` with your API key.
 
 The i14y API uses keys to allow access to the API. While we're still in beta, [email us](mailto:search@support.digitalgov.gov) to request access.
 
@@ -56,7 +56,7 @@ The i14y API expects the key to be included in all API requests to the server in
 `Authorization: Basic qG9yZW46bG9yZW5pMTR5dG9rZW4=`
 
 <aside class="notice">
-Replace <code>your_collection_handle</code> with your collection handle, and replace <code>your_secret_token</code> with your API key.
+Replace <code>your_drawer_handle</code> with your drawer handle, and replace <code>your_secret_token</code> with your API key.
 </aside>
 
 # Create, update, and delete documents
@@ -67,7 +67,7 @@ Replace <code>your_collection_handle</code> with your collection handle, and rep
 curl "https://i14y.usa.gov/api/v1/documents"
   -XPOST 
   -H "Content-Type:application/json"
-  -u your_collection_handle:your_secret_token
+  -u your_drawer_handle:your_secret_token
   -d '{"document_id":"1",
       "title":"this is a fairly short title",
       "path": "http://www.gov.gov/cms/doc1.html", 
@@ -121,7 +121,7 @@ language | false | Two-letter [locale](https://github.com/GSA/punchcard/tree/mas
 curl "https://i14y.usa.gov/api/v1/documents/{document_id}"
   -XPUT 
   -H "Content-Type:application/json"
-  -u your_collection_handle:your_secret_token
+  -u your_drawer_handle:your_secret_token
   -d '{"title":"check out this info...today only!",
       "promote": true"
       }'
@@ -167,7 +167,7 @@ Your updates are reflected in your search results within seconds!
 ```sh
 curl "https://i14y.usa.gov/api/v1/documents/{document_id}"
   -XDELETE 
-  -u your_collection_handle:your_secret_token
+  -u your_drawer_handle:your_secret_token
 ```
 
 > The above command returns JSON structured like this:
