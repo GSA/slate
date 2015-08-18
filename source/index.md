@@ -47,7 +47,7 @@ curl "https://i14y.usa.gov/api/v1/documents"
   -u your_collection_handle:your_secret_token 
 ```
 
-> Replace `your_drawer_handle` with the your drawer handle, and replace `your_secret_token` with your API key.
+> Replace `your_drawer_handle` with your drawer handle, and replace `your_secret_token` with your API key.
 
 The i14y API uses keys to allow access to the API. While we're still in beta, [email us](mailto:search@support.digitalgov.gov) to request access.
 
