@@ -141,7 +141,7 @@ Replace <code>your_drawer_handle</code> with your drawer handle, and replace <co
 <tr>
 <td>document_id</td>
 <td>true</td>
-<td>A document ID that is unique to your CMS</td>
+<td>A document ID that is unique to your CMS. It cannot begin with a forward slash.</td>
 </tr>
 <tr>
 <td>title</td>
@@ -190,7 +190,7 @@ Replace <code>your_drawer_handle</code> with your drawer handle, and replace <co
 </aside>
 
 <h2 id="update-a-document">Update a document</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"https://i14y.usa.gov/api/v1/documents/{document_id}"</span>
+<pre class="highlight shell"><code>curl <span class="s2">"https://i14y.usa.gov/api/v1/documents/{uri_encoded_document_id}"</span>
   -XPUT 
   -H <span class="s2">"Content-Type:application/json"</span>
   -u your_drawer_handle:your_secret_token
@@ -213,7 +213,7 @@ Replace <code>your_drawer_handle</code> with your drawer handle, and replace <co
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">PUT https://i14y.usa.gov/api/v1/documents/{document_id}</code></p>
+<p><code class="prettyprint">PUT https://i14y.usa.gov/api/v1/documents/{uri_encoded_document_id}</code></p>
 
 <p>You must use https.</p>
 
@@ -272,8 +272,12 @@ Replace <code>your_drawer_handle</code> with your drawer handle, and replace <co
 Your updates are reflected in your search results within seconds!
 </aside>
 
+<aside class="notice">
+The `uri_encoded_document_id` is the ID you assigned to the document when you created it. It must be URI encoded here.
+</aside>
+
 <h2 id="delete-a-document">Delete a document</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"https://i14y.usa.gov/api/v1/documents/{document_id}"</span>
+<pre class="highlight shell"><code>curl <span class="s2">"https://i14y.usa.gov/api/v1/documents/{uri_encoded_document_id}"</span>
   -XDELETE 
   -u your_drawer_handle:your_secret_token
 </code></pre>
@@ -292,12 +296,12 @@ Your updates are reflected in your search results within seconds!
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">DELETE https://i14y.usa.gov/api/v1/documents/{document_id}</code></p>
+<p><code class="prettyprint">DELETE https://i14y.usa.gov/api/v1/documents/{uri_encoded_document_id}</code></p>
 
 <p>You must use https.</p>
 
-<aside class="success">
-The `document_id` is the ID you assigned to the document when you created it.
+<aside class="notice">
+The `uri_encoded_document_id` is the ID you assigned to the document when you created it. It must be URI encoded here.
 </aside>
 
           <h1 id="errors">Errors</h1>
