@@ -75,7 +75,8 @@ curl "https://i14y.usa.gov/api/v1/documents"
       "description":"some more information here on the document", 
       "content":"the long form body of the document", 
       "promote": false, 
-      "language" : "en"
+      "language" : "en",
+      "tags" : "tag1, another tag"
       }'
 ```
 
@@ -110,6 +111,7 @@ content | false* | Document content
 changed | false | When document was modified (such as '2013-02-27T10:00:01Z')
 promote | false | Whether to promote the document in the relevance ranking
 language | false | Two-letter [locale](https://github.com/GSA/punchcard/tree/master/localizations) describing language of document (defaults to 'en')
+tags | false | Comma-separated list of case-insentitive tags
 
 <aside class="success">
 * You must pass either a description or content, and preferably both!
@@ -157,6 +159,7 @@ content | false | Document content
 changed | false | When document was modified (such as '2013-02-27T10:00:01Z')
 promote | false | Whether to promote the document in the relevance ranking
 language | false | Two-letter [locale](https://github.com/GSA/punchcard/tree/master/localizations) describing language of document (defaults to 'en')
+tags | false | Comma-separated list of case-insentitive tags
 
 <aside class="success">
 Your updates are reflected in your search results within seconds!
