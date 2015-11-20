@@ -101,7 +101,7 @@ You must use https.
 
 Parameter | Required | Description 
 --------- | ------- | ----------- 
-document_id | true | A document ID that is unique to your CMS
+document_id | true | A document ID that is unique to your CMS. It cannot begin with a forward slash.
 title | true | Document title
 path | true | Document link URL
 created | true | When the document was initially created (such as '2013-02-27T10:00:00Z') 
@@ -118,7 +118,7 @@ language | false | Two-letter [locale](https://github.com/GSA/punchcard/tree/mas
 ## Update a document
 
 ```sh
-curl "https://i14y.usa.gov/api/v1/documents/{document_id}"
+curl "https://i14y.usa.gov/api/v1/documents/{uri_encoded_document_id}"
   -XPUT 
   -H "Content-Type:application/json"
   -u your_drawer_handle:your_secret_token
@@ -141,7 +141,7 @@ This endpoint updates a document.
 
 ### HTTP Request
 
-`PUT https://i14y.usa.gov/api/v1/documents/{document_id}`
+`PUT https://i14y.usa.gov/api/v1/documents/{uri_encoded_document_id}`
 
 You must use https.
 
@@ -161,11 +161,14 @@ language | false | Two-letter [locale](https://github.com/GSA/punchcard/tree/mas
 <aside class="success">
 Your updates are reflected in your search results within seconds!
 </aside>
+<aside class="notice">
+The `uri_encoded_document_id` is the ID you assigned to the document when you created it. It must be URI encoded here.
+</aside>
 
 ## Delete a document
 
 ```sh
-curl "https://i14y.usa.gov/api/v1/documents/{document_id}"
+curl "https://i14y.usa.gov/api/v1/documents/{uri_encoded_document_id}"
   -XDELETE 
   -u your_drawer_handle:your_secret_token
 ```
@@ -184,10 +187,10 @@ This endpoint deletes a document.
 
 ### HTTP Request
 
-`DELETE https://i14y.usa.gov/api/v1/documents/{document_id}`
+`DELETE https://i14y.usa.gov/api/v1/documents/{uri_encoded_document_id}`
 
 You must use https.
 
-<aside class="success">
-The `document_id` is the ID you assigned to the document when you created it.
+<aside class="notice">
+The `uri_encoded_document_id` is the ID you assigned to the document when you created it. It must be URI encoded here.
 </aside>
