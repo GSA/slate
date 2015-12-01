@@ -116,7 +116,9 @@ tags | false | Comma-separated list of case-insentitive tags
 <aside class="success">
 * You must pass either a description or content, and preferably both!
 </aside>
-
+<aside class="notice">
+Attempting to create a document with a `document_id` that already exists results in an error.
+</aside>
 ## Update a document
 
 ```sh
