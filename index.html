@@ -195,6 +195,10 @@ Replace <code>your_drawer_handle</code> with your drawer handle, and replace <co
 * You must pass either a description or content, and preferably both!
 </aside>
 
+<aside class="notice">
+Attempting to create a document with a `document_id` that already exists results in an error.
+</aside>
+
 <h2 id="update-a-document">Update a document</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"https://i14y.usa.gov/api/v1/documents/{uri_encoded_document_id}"</span>
   -XPUT 
