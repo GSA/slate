@@ -44,7 +44,7 @@ You'll need to have a [DigitalGov Search account](https://search.usa.gov/sites) 
 curl "https://i14y.usa.gov/api/v1/documents"
   -XPOST 
   -H "Content-Type:application/json"
-  -u your_collection_handle:your_secret_token 
+  -u your_drawer_handle:your_secret_token 
 ```
 
 > Replace `your_drawer_handle` with your drawer handle, and replace `your_secret_token` with your API key.
