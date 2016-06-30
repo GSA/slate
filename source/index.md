@@ -40,7 +40,7 @@ You'll need to have a [DigitalGov Search account](https://search.usa.gov/sites) 
 > To authorize, use this code:
 
 ```sh
-# With curl you can just pass the correct header with each request
+# With curl, you can just pass the correct header with each request
 curl "https://i14y.usa.gov/api/v1/documents"
   -XPOST 
   -H "Content-Type:application/json"
