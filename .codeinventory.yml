@@ -1,0 +1,13 @@
+name: 'DigitalGov Search i14y Slate'
+description: 'API documentation for the DigitalGov Search indexing API `i14y`, using the Slate interface'
+license: null
+openSourceProject: 1
+governmentWideReuseProject: 1
+tags:
+    - GSA
+    - DigitalGovSearch
+    - API
+    - documentation
+    - indexing
+contact:
+    email: dawn.mccleskey@gsa.gov
