@@ -74,9 +74,9 @@
 </blockquote>
 <pre class="highlight shell"><code><span class="c"># With curl, you can just pass the correct header with each request</span>
 curl <span class="s2">"https://i14y.usa.gov/api/v1/documents"</span>
-  -XPOST 
+  -XPOST
   -H <span class="s2">"Content-Type:application/json"</span>
-  -u your_drawer_handle:your_secret_token 
+  -u your_drawer_handle:your_secret_token
 </code></pre>
 
 <blockquote>
@@ -97,16 +97,16 @@ Replace <code>your_drawer_handle</code> with your drawer handle, and replace <co
 
 <h2 id="create-a-document">Create a document</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"https://i14y.usa.gov/api/v1/documents"</span>
-  -XPOST 
+  -XPOST
   -H <span class="s2">"Content-Type:application/json"</span>
   -u your_drawer_handle:your_secret_token
   -d <span class="s1">'{"document_id":"1",
       "title":"this is a fairly short title",
-      "path": "http://www.gov.gov/cms/doc1.html", 
+      "path": "http://www.gov.gov/cms/doc1.html",
       "created": "2015-05-12T22:35:09Z",
-      "description":"some more information here on the document", 
-      "content":"the long form body of the document", 
-      "promote": false, 
+      "description":"some more information here on the document",
+      "content":"the long form body of the document",
+      "promote": false,
       "language" : "en",
       "tags" : "tag1, another tag"
       }'</span>
@@ -201,7 +201,7 @@ Attempting to create a document with a `document_id` that already exists results
 
 <h2 id="update-a-document">Update a document</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"https://i14y.usa.gov/api/v1/documents/{uri_encoded_document_id}"</span>
-  -XPUT 
+  -XPUT
   -H <span class="s2">"Content-Type:application/json"</span>
   -u your_drawer_handle:your_secret_token
   -d <span class="s1">'{"title":"check out this info...today only!",
@@ -293,7 +293,7 @@ The `uri_encoded_document_id` is the ID you assigned to the document when you cr
 
 <h2 id="delete-a-document">Delete a document</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"https://i14y.usa.gov/api/v1/documents/{uri_encoded_document_id}"</span>
-  -XDELETE 
+  -XDELETE
   -u your_drawer_handle:your_secret_token
 </code></pre>
 
