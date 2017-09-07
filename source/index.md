@@ -42,9 +42,9 @@ You'll need to have a [DigitalGov Search account](https://search.usa.gov/sites) 
 ```sh
 # With curl, you can just pass the correct header with each request
 curl "https://i14y.usa.gov/api/v1/documents"
-  -XPOST 
+  -XPOST
   -H "Content-Type:application/json"
-  -u your_drawer_handle:your_secret_token 
+  -u your_drawer_handle:your_secret_token
 ```
 
 > Replace `your_drawer_handle` with your drawer handle, and replace `your_secret_token` with your API key.
@@ -65,16 +65,16 @@ Replace <code>your_drawer_handle</code> with your drawer handle, and replace <co
 
 ```sh
 curl "https://i14y.usa.gov/api/v1/documents"
-  -XPOST 
+  -XPOST
   -H "Content-Type:application/json"
   -u your_drawer_handle:your_secret_token
   -d '{"document_id":"1",
       "title":"this is a fairly short title",
-      "path": "http://www.gov.gov/cms/doc1.html", 
+      "path": "http://www.gov.gov/cms/doc1.html",
       "created": "2015-05-12T22:35:09Z",
-      "description":"some more information here on the document", 
-      "content":"the long form body of the document", 
-      "promote": false, 
+      "description":"some more information here on the document",
+      "content":"the long form body of the document",
+      "promote": false,
       "language" : "en",
       "tags" : "tag1, another tag"
       }'
@@ -100,12 +100,12 @@ You must use https.
 
 ### Query Parameters
 
-Parameter | Required | Description 
---------- | ------- | ----------- 
+Parameter | Required | Description
+--------- | ------- | -----------
 document_id | true | A document ID that is unique to your CMS. It cannot begin with a forward slash.
 title | true | Document title
 path | true | Document link URL
-created | true | When the document was initially created (such as '2013-02-27T10:00:00Z') 
+created | true | When the document was initially created (such as '2013-02-27T10:00:00Z')
 description | false* | Document description
 content | false* | Document content
 changed | false | When document was modified (such as '2013-02-27T10:00:01Z')
@@ -123,7 +123,7 @@ Attempting to create a document with a `document_id` that already exists results
 
 ```sh
 curl "https://i14y.usa.gov/api/v1/documents/{uri_encoded_document_id}"
-  -XPUT 
+  -XPUT
   -H "Content-Type:application/json"
   -u your_drawer_handle:your_secret_token
   -d '{"title":"check out this info...today only!",
@@ -151,11 +151,11 @@ You must use https.
 
 ### Query Parameters
 
-Parameter | Required | Description 
---------- | ------- | ----------- 
+Parameter | Required | Description
+--------- | ------- | -----------
 title | false | Document title
 path | false | Document link URL
-created | false | When document was initially created (such as '2013-02-27T10:00:00Z') 
+created | false | When document was initially created (such as '2013-02-27T10:00:00Z')
 description | false | Document description
 content | false | Document content
 changed | false | When document was modified (such as '2013-02-27T10:00:01Z')
@@ -174,7 +174,7 @@ The `uri_encoded_document_id` is the ID you assigned to the document when you cr
 
 ```sh
 curl "https://i14y.usa.gov/api/v1/documents/{uri_encoded_document_id}"
-  -XDELETE 
+  -XDELETE
   -u your_drawer_handle:your_secret_token
 ```
 
