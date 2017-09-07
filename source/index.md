@@ -105,7 +105,7 @@ Parameter | Required | Description
 document_id | true | A document ID that is unique to your CMS. It cannot begin with a forward slash.
 title | true | Document title
 path | true | Document link URL
-created | true | When the document was initially created (such as '2013-02-27T10:00:00Z')
+created | false | When the document was initially created (such as '2013-02-27T10:00:00Z')
 description | false* | Document description
 content | false* | Document content
 changed | false | When document was modified (such as '2013-02-27T10:00:01Z')
