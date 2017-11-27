@@ -102,7 +102,7 @@ You must use https.
 
 Parameter | Required | Description
 --------- | ------- | -----------
-document_id | true | A document ID that is unique to your CMS. It cannot begin with a forward slash.
+document_id | true | A document ID that is unique to your CMS. It cannot contain any forward slashes, and it cannot be longer than 512 bytes.
 title | true | Document title
 path | true | Document link URL
 created | false | When the document was initially created (such as '2013-02-27T10:00:00Z')
